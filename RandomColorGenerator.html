@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+
+       
+        div{
+            height: 500px;
+            width: 500px;
+            border: 5px black solid;
+            border-radius: 20px;
+            position: relative;
+            left: 440px;
+            top: 20px; 
+        }
+        h1{
+            font-size: 30px; 
+            color: rgb(0, 0, 0); 
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-variant: initial;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+        #button{
+            border: 2px black solid;
+            border-radius: 30px;
+            height: 40px;
+            width: 300px;
+            background-color: blue;
+            color: white;
+            font-style: oblique;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            left: 550px;
+        }
+        body{
+            background-color: honeydew;
+        }
+        #colId{
+            height: 20px;
+            width: 200px;
+            color: white;
+            position: relative;
+            left: 130px;
+            padding: 10px;
+            font-size: 20px;
+            font-style: oblique;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <h1><u>Random Color</u></h1>
+    <button id="button" type="button">Click here to change colour</button>
+    <div><aside id="colId"></aside></div>
+
+
+    
+    <script>
+        var button=document.querySelector("button")
+var div=document.querySelector("div")
+button.addEventListener("click",random)
+var colId=document.querySelector("#colId")
+function random()
+{
+    var colour="#"
+    for(let i=0;i<6;i++)
+    {
+        colour=colour+parseInt(Math.random()*10);                            // On click Random colour of a body 
+    }
+   div.style.backgroundColor=colour;
+   colId.style.backgroundColor="black",
+//    colId.style.colour="white"
+   colId.innerHTML=`Colour id is:${colour}`
+}
+
+    </script>
+</body>
+</html>
