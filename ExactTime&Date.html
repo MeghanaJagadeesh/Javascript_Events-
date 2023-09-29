@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Date</title>
+    <style>
+        #time{
+            font: inherit;
+            font-size: 30px;
+            font-weight: bold;
+            font-style: oblique;
+            position: relative;
+            bottom: 17px;
+        }
+        #dayDate{
+            font: inherit;
+            font-size: 30px;
+            font-weight: bold;
+            font-style: oblique;
+            position: relative;
+            bottom: 17px;
+        }
+
+        legend{
+            font-style: italic;
+            font-size: 18px;
+        }
+        fieldset{
+            position: relative;
+            margin-top: 150px;
+            background-color: rgb(202, 220, 202);
+        }
+        h1{
+            /* margin-top: 150px; */
+            position: relative;
+            top: 130px;
+            text-decoration: underline;
+        
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Time and Date</h1>
+        <fieldset style="height: 150px; width: 350px;">
+            <legend> time & Date</legend>
+            <p id="time"><span></span> : <span></span> : <span></span></p>
+
+        
+            
+            <p id="dayDate"> <span class="DD"></span> / <span class="DD"></span> / <span class="DD"></span> <span id="day"></span></p>
+
+        </fieldset>
+        
+
+    </center>
+    <script>
+        
+//timing
+var time=document.querySelectorAll("span")
+var finalTime=Array.from(time)
+function clock() 
+{
+    var obj=new Date()
+    var hours=obj.getHours()
+    var min=obj.getMinutes()
+    var sec=obj.getSeconds()
+    finalTime[0].innerHTML=`${hours} hrs`
+    finalTime[1].innerHTML=`${min} min`
+    finalTime[2].innerHTML=`${sec} sec`  
+}
+setInterval(clock,1000)
+
+
+//date and day
+var date1=document.getElementsByClassName("DD")
+var day1=document.querySelector("#day")
+var finalDate=Array.from(date1)
+function dateDay()
+{
+    var obj2=new Date();
+    var date=obj2.getDate();
+    var month=obj2.getMonth()+1;
+    var year=obj2.getFullYear();
+    var day2=obj2.getDay();
+    var days={
+        0:'Sunday',
+        1:'Monday',
+        2:'Tuesday',
+        3:'Wednesday',
+        4:'Thursday',
+        5:'Friday',
+        6:'Saturday'
+    }
+
+    finalDate[0].innerHTML=`${date}`
+    finalDate[1].innerHTML=`${month}`
+    finalDate[2].innerHTML=`${year}`
+    for(let i=0;i<=7;i++)
+    {
+        if(day2==i)
+        {
+             day1.innerHTML=`${days[i]}`
+        }
+    }
+}
+setInterval(dateDay,1000)
+
+
+
+    </script>
+
+</body>
+</html>
