@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>
+    <style>
+        *{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+        #main{
+            height: 300px;
+            width: 600px;
+            border: 1px rgb(170, 166, 166) solid;
+            background-color: #f9f9f9;
+            position: relative;
+            top: 80px;
+        }
+        #header{
+            font-style: inherit;
+            /* text-shadow: 2px 0px 5px rgb(255, 255, 255); */
+            color: rgb(0, 0, 0);
+            font-weight: bolder;
+            font-size: 35px;
+            position: relative;
+            top: 50px;
+        }
+
+        .text{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #inputOtp{
+            height: 30px;
+            width: 300px;
+            font-size: 17PX;
+            border-radius: 5px;
+            background-color: white;
+            position: relative;
+            right: 160px;
+            bottom: 50px;
+        }
+        #sendOtpButton{
+            position: relative;
+            bottom: 90px;
+            left: 100px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            height: 35px;
+            width: 380px;
+            border-radius: 3px;
+            background-color: rgb(0, 0, 0);
+             color: white;
+            transition-property: all;
+            transition-duration: 0.5s;
+            
+        }
+        #sendOtpButton:hover{
+            font-size: 17px;
+            background-color: rgb(113, 113, 113);
+        }
+        
+        #submit{
+            position: relative;
+            bottom: 10px;
+            right: 30px;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            height: 40px;
+            width: 150px;
+            font-size: 20px;
+            border-radius: 30PX;
+            transition-property: all;
+            transition-duration: 0.5s;
+        }
+        #submit:hover{
+            background-color: rgb(113, 113, 113);
+            font-size: 17px;
+        }
+        #reset{
+            position: relative;
+            bottom: 10px;
+            left: 100px;
+            background-color: rgb(0, 0, 0);
+            font-size: 20px;
+            color: white;
+            height: 40px;
+            width: 150px;
+            border-radius: 30PX;
+            transition-property: all;
+            transition-duration: 0.5s;
+        }
+        #reset:hover{
+            background-color: rgb(113, 113, 113);
+            font-size: 17px;
+        }
+        #acceptCaution{
+            height: 30px;
+            width: 350px;
+            /* border: 1PX black solid; */
+            position: relative;
+            bottom: 42px;
+            font-size: 18px;
+            color: green;
+            font-family: Arial;
+            font-weight: bold;
+
+        }
+        #rejectCaution{
+            height: 30px;
+            width: 350px;
+            position: relative;
+            /* border: 1PX black solid; */
+            bottom: 92px;
+            font-size: 18px;
+            color: red;
+            font-family: Arial;
+            font-weight: bold;
+
+        }
+        #label{
+            position: relative;
+            bottom: 50px;
+            left: 65px;
+        }
+    </style>
+</head>
+<body>
+
+   <center>
+    <h2 id="header"><u>OTP Generate and Validation</u></h2>
+   <main id="main">
+    <p id="acceptCaution"> </p>
+    <p id="rejectCaution"> </p>
+
+    <table>
+        <tr>
+            <td> <button type="button" class="text"  id="sendOtpButton">Click here to get otp</button></td>
+        </tr>
+            <tr>
+                <td><label for="otp" class="text" id="label">Enter OTP</label></td>
+                <td><input type="text" name="otp" class="text" id="inputOtp" placeholder="Enter your otp here"></td>
+            </tr>
+                <td> <button type="button" id="reset" class="text">Re-set</button></td>
+                <td> <button type="submit" class="text"  id="submit">Submit</button></td>
+            </tr>
+     </table>
+    </main>
+
+    </center>
+    
+
+    <script>
+        var otp=""
+function otpGenerate()
+{
+    for(let i=0;i<4;i++)
+    {
+        otp=otp+parseInt(Math.random()*10)
+    }
+    alert(`Your OTP is ${otp}`);
+}
+
+
+var sendOtpButton=document.querySelector("#sendOtpButton")
+sendOtpButton.addEventListener("click", otpGenerate)
+var reset=document.querySelector("#reset")
+var inputOtp=document.querySelector("#inputOtp")
+var acceptCaution=document.querySelector("#acceptCaution")
+var rejectCaution=document.querySelector("#rejectCaution")
+var submit=document.querySelector("#submit")
+
+submit.addEventListener("click", (e)=> {
+    e.preventDefault()
+    var inputValue=inputOtp.value
+if(inputValue==otp)
+{
+    acceptCaution.innerHTML=`OTP is Validated`
+}
+else
+{
+    rejectCaution.innerHTML=`*In-valid OTP`
+}
+})
+
+reset.addEventListener("click", function(){
+   
+    inputOtp.value=""
+})
+    </script>
+</body>
+</html>
