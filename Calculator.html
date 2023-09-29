@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            background-color:  #f9f9f9;
+        }
+        main{
+            position: relative;
+            left: 500px;
+            top:60px;
+
+        }
+        .button{
+            
+            height: 50px;
+           width: 90px;
+           font-family: 'Lucida Sans', 'Lucida Sans Regular';
+           border-radius: 7px;
+           font-weight: bold;
+           font-size: 20px;
+           border: 2px white solid;
+           background-color: rgb(190, 190, 190);
+        }
+        .button:hover{
+            border: 1px rgb(0, 0, 0) solid;
+            background-color: rgb(210, 210, 210);
+            
+        }
+        #input{
+            height: 50px;
+           width: 363px;
+            border-radius: 7px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular';
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px gray solid;
+        }
+        h1{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular';
+            position: relative;
+            left: 90px;
+           
+        }
+
+    </style>
+</head>
+<body>
+        <main>
+            <h1>Calculator</h1>
+    <div>
+        <input type="text" id="input">
+    </div>
+
+    <div class="row">
+        <tr>
+             <button class="button" onclick="input.value=``">AC</button>
+             <button class="button" id="back">Back</button>
+             <button class="button" id="pow">x<sup>2</sup></button>
+             <button class="button" id="percent">%</button>
+        </tr>
+    </div>
+    <div class="row">
+        <tr>
+             <button class="button" id="sinbtn">sin</button>
+             <button class="button" id="cosbtn">cos</button>
+             <button class="button" id="tanbtn">tan</button>
+             <button class="button" id="sqrt">√x</button>
+             
+        </tr>
+    </div>
+    <div class="row">
+        <tr>
+             <button class="button" onclick="input.value+=7">7</button>
+             <button class="button" onclick="input.value+=8">8</button>
+             <button class="button" onclick="input.value+=9">9</button>
+             <button class="button" onclick="input.value+=`*`">*</button>
+        </tr>
+    </div>
+    <div class="row">
+        <tr>
+             <button class="button" onclick="input.value+=4">4</button>
+             <button class="button" onclick="input.value+=5">5</button>
+             <button class="button" onclick="input.value+=6">6</button>
+             <button class="button" onclick="input.value+=`-`">-</button>
+        </tr>
+    </div>
+    <div class="row">
+        <tr>
+             <button class="button" onclick="input.value+=1">1</button>
+             <button class="button" onclick="input.value+=2">2</button>
+             <button class="button" onclick="input.value+=3">3</button>
+             <button class="button" onclick="input.value+=`+`">+</button>
+        </tr>
+    </div>
+   
+    <div class="row">
+        <tr>
+             <button class="button" onclick="input.value+=`/`">/</button>
+             <button class="button" onclick="input.value+=0">0</button>
+             <button class="button" onclick="input.value+=`.`">.</button>
+             <button class="button" id="equals">=</button>
+        </tr>
+    </div>
+</main>
+
+    <script>
+        var back=document.querySelector("#back")
+var inputField=document.querySelector("#input")
+// inputField.value=0
+// back button
+back.addEventListener("click", function()
+{
+    let inputValue=inputField.value
+    var ans=inputValue.split("")
+    ans.splice(inputValue.length-1,1);
+     inputField.value=ans.join("");
+})
+
+// power 
+var power=document.querySelector("#pow")
+power.addEventListener("click", function(){
+    inputField.value=Math.pow(inputField.value,2)
+})
+
+// Cos
+var cosbtn=document.querySelector("#cosbtn")
+    cosbtn.addEventListener("click",()=>{
+        inputField.value=Math.cos(Number(inputField.value))
+    })
+
+// Sin 
+var sinbtn=document.querySelector("#sinbtn")
+sinbtn.addEventListener("click",()=>{
+    inputField.value=Math.sin(Number(inputField.value))
+})
+
+// tan
+var tanbtn=document.querySelector("#tanbtn")
+tanbtn.addEventListener("click",()=>{
+    inputField.value=Math.tan(Number(inputField.value))
+})
+
+
+// Percentage
+var percent=document.querySelector("#percent")
+percent.addEventListener("click",()=>{
+    inputField.value=inputField.value/100
+})
+
+// sqrt
+var sqrt=document.querySelector("#sqrt")
+sqrt.addEventListener("click", ()=>{
+    inputField.value=Math.sqrt(inputField.value)
+})
+
+// equals
+var equals=document.querySelector("#equals")
+equals.addEventListener("click", ()=>{
+    inputField.value=eval(inputField.value)
+
+
+})
+    </script>
+</body>
+</html>
